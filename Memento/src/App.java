@@ -15,20 +15,13 @@ public class App {
         System.out.println("Conteúdo atual: " + editor.getConteudo()); // Saída: Olá, mundo!
 
         // O usuário quer desfazer a última ação (escrever "mundo!")
-        Memento memento = cuidador.desfazer();
-        if (memento != null) {
-            editor.restaurarMemento(memento);
-        }
-
+        Memento memento = cuidador.desfazerComSeguranca();
+        editor.restaurarMemento(memento);
         System.out.println("Após desfazer: " + editor.getConteudo()); // Saída: Olá,
 
         // O usuário decide refazer a ação
-        memento = cuidador.refazer();
-        if (memento != null) {
-            editor.restaurarMemento(memento);
-        }
-
+        memento = cuidador.refazerComSeguranca();
+        editor.restaurarMemento(memento);
         System.out.println("Após refazer: " + editor.getConteudo()); // Saída: Olá, mundo!
     }
-
 }

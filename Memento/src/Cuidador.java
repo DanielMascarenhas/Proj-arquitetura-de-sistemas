@@ -14,19 +14,23 @@ class Cuidador {
         estadoAtual++;
     }
 
-    public Memento desfazer() {
+    // Método para desfazer com segurança
+    public Memento desfazerComSeguranca() {
         if (estadoAtual > 0) {
             estadoAtual--;
             return mementos.get(estadoAtual);
         }
-        return null;
+        // Se não puder desfazer, retorna o estado atual sem modificações
+        return mementos.get(estadoAtual);
     }
 
-    public Memento refazer() {
+    // Método para refazer com segurança
+    public Memento refazerComSeguranca() {
         if (estadoAtual < mementos.size() - 1) {
             estadoAtual++;
             return mementos.get(estadoAtual);
         }
-        return null;
+        // Se não puder refazer, retorna o estado atual sem modificações
+        return mementos.get(estadoAtual);
     }
 }
